@@ -1,0 +1,252 @@
+nvm
+nvm install --lts
+cls
+sudo dnf install micro
+micro ~/.zsh/tools/node.zsh
+source ~/.zshrc\
+nvm install --lts
+sudo dnf install -y guake
+sudo dnf remove yakueke
+sudo dnf remove yakuake
+mkdir -p ~/.local/share/fonts\
+cd /tmp\
+\
+# Download JetBrainsMono Nerd Font (stable, widely supported)\
+curl -fLo "JetBrainsMono.zip" \\
+  https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip\
+\
+unzip -o JetBrainsMono.zip -d ~/.local/share/fonts/JetBrainsMono/\
+fc-cache -fv
+sudo dnf install -y kitty
+sudo dnf remove guake
+kitty --title=dropdown
+sudo dnf remove kitty
+sudo dnf install -y tilix
+tilix --quake
+sudo dnf remove tilix
+sudo dnf install -y gostty
+sudo dnf install -y ghostty
+sudo dnf install -y eza
+micro ~/.zsh/aliases.zsh
+vi ~/.zsh/aliases.zsh
+tree
+lt
+cd 
+cd Downloads
+# CPU + RAM pressure\
+free -h\
+top -bn1 | head -20\
+\
+# GPU driver check (important for GNOME compositor)\
+glxinfo | grep "OpenGL renderer"\
+lspci | grep -i vga\
+\
+# Is hardware acceleration active?\
+cat /sys/module/nvidia/version 2>/dev/null || echo "no nvidia module"\
+lsmod | grep -E "amdgpu|radeon|i915|nvidia"
+# Install Intel VA-API drivers\
+sudo dnf install -y intel-media-driver libva libva-utils\
+\
+# Verify VA-API works\
+vainfo
+sudo dnf install -y libva-intel-driver intel-gpu-tools libva-utils\
+vainfo
+sudo dnf search intel | grep -i va
+sudo dnf install -y libva-intel-media-driver intel-gpu-tools libva-utils\
+vainfo
+# Enable RPM Fusion repos if not already\
+sudo dnf install -y \\
+  https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \\
+  https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm\
+\
+# Install the nonfree intel media driver\
+sudo dnf install -y intel-media-driver\
+\
+# Verify H264/H265 now show up\
+vainfo
+# Create Edge flags file\
+cat > ~/.config/microsoft-edge/edge-flags << 'EOF'\
+--enable-features=VaapiVideoDecoder,VaapiVideoEncoder,RawDraw\
+--disable-features=UseChromeOSDirectVideoDecoder\
+--use-gl=angle\
+--use-angle=gl\
+--enable-gpu-rasterization\
+--ignore-gpu-blocklist\
+EOF
+cat > ~/.config/microsoft-edge/edge-flags << 'EOF'\
+--enable-features=VaapiVideoDecoder,VaapiVideoEncoder,RawDraw\
+--disable-features=UseChromeOSDirectVideoDecoder\
+--use-gl=angle\
+--use-angle=gl\
+--enable-gpu-rasterization\
+--ignore-gpu-blocklist\
+EOF
+which microsoft-edge-beta
+echo 'LIBVA_DRIVER_NAME=iHD' | sudo tee /etc/environment
+mkdir -p ~/.config/microsoft-edge-beta\
+cat > ~/.config/microsoft-edge-beta/edge-flags << 'EOF'\
+--enable-features=VaapiVideoDecoder,VaapiVideoEncoder,RawDraw\
+--disable-features=UseChromeOSDirectVideoDecoder\
+--use-gl=angle\
+--use-angle=gl\
+--enable-gpu-rasterization\
+--ignore-gpu-blocklist\
+EOF
+cat > ~/.config/microsoft-edge-beta/edge-flags << 'EOF'\
+--enable-features=VaapiVideoDecoder,VaapiVideoEncoder,RawDraw\
+--disable-features=UseChromeOSDirectVideoDecoder,Vulkan\
+--use-gl=angle\
+--use-angle=gl\
+--enable-gpu-rasterization\
+--ignore-gpu-blocklist\
+EOF
+pkill -f msedge; sleep 2; microsoft-edge-beta &
+cat ~/.config/microsoft-edge-beta/edge-flags
+mkdir -p ~/.config/microsoft-edge-beta\
+echo "--disable-features=UseChromeOSDirectVideoDecoder,Vulkan\
+--enable-features=VaapiVideoDecoder,VaapiVideoEncoder,RawDraw\
+--use-gl=angle\
+--use-angle=gl\
+--enable-gpu-rasterization\
+--ignore-gpu-blocklist" > ~/.config/microsoft-edge-beta/edge-flags
+ls ~/.config/ | grep -i edge
+sudo dnf install mcfly
+# Install via cargo (Rust package manager)\
+curl -LSfs https://raw.github.com/cantino/mcfly/master/ci/install.sh | sh -s -- --git cantino/mcfly\
+\
+# Init in shell (add to ~/.bashrc)\
+eval "$(mcfly init bash)"\
+source ~/.bashrc
+curl -LSfs https://raw.github.com/cantino/mcfly/master/ci/install.sh | sh -s -- --git cantino/mcfly --install-method user\
+\
+# 2. Add to PATH if not already there\
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc\
+\
+# 3. Init for ZSH (not bashecho 'eval "$(mcfly init zsh)"' >> ~/.zshrc\
+\
+# 4. Reload\
+source ~/.zshrc
+# 1. Install to ~/.local/bin (no sudo needed)\
+curl -LSfs https://raw.github.com/cantino/mcfly/master/ci/install.sh | sh -s -- --git cantino/mcfly --install-method user\
+\
+# 2. Add to PATH if not already there\
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc\
+\
+# 3. Init for ZSH (not bashecho 'eval "$(mcfly init zsh)"' >> ~/.zshrc\
+\
+# 4. Reload\
+source ~/.zshrc
+ls -la ~/.local/bin/mcfly    # Should exist\
+~/.local/bin/mcfly --version  # Should show v0.9.4
+# Remove the broken eval line\
+sed -i '/mcfly init zsh/d' ~/.zshrc
+sudo dnf install cargo\
+cargo install mcfly
+echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(mcfly init zsh)"' >> ~/.zshrc
+reload
+la
+$SHELL
+echo $SHELL
+lscpu
+lspci | grep -i vga
+glxinfo | grep "OpenGL renderer"
+sudo dnf install obs-studio
+sudo dnf install kdenlive
+sudo dnf install ffmpeg
+which ffmpeg
+type ffmpeg
+ffmpeg --version
+ffmpeg -v
+ffmpeg -V
+sudo dnf install gimp
+sudo dnf install audacity
+xlwE
+C
+gimp --version
+dnf install microsoft-edge-stable
+sudo dnf install microsoft-edge-stable
+fastfetch
+sudo dnf install glmark2
+glmark2
+sudo intel_gpu_top
+watch -n |free
+watch -c -p 1 |free
+glmark2 --fullscreen
+df
+sudo dnf remove glmark2
+sudo dnf install vkmark\
+vkmark
+vkmark --fullscreen
+sudo dnf remove vkmark
+sencers
+sudo dnf remove microsoft-edge-beta
+sudo dnf install ulauncher
+ulauncher
+ulauncher --version
+tmux
+ll
+cd Documents
+touch journal.text
+ls
+pwd
+sudo $PWD
+echo 'pwd'
+echo "$(pwd)/myfile.txt"
+sudo dnf install sysbench
+sysbench cpu --threads=$(nproc) run
+sensors
+stress-ng --cpu 0 --timeout 300s --metrics
+[200~watch sensors~
+watch sensors
+powerprofilesctl set performance
+stress-ng --cpu 0 --timeout 120s --metrics
+sudo cpupower frequency-set -g performance
+sudo dnf remove sysbench
+$PWD
+echo pwd
+sudo dnf remove stress-ng
+sudo dnf autoremove
+c
+reboot
+free
+clear
+exit
+: 1776961170:0;free
+: 1776961213:0;clear
+: 1776961217:0;fastfetch
+: 1776961283:0;clear
+: 1776961325:0;fastfetch
+: 1776961779:0;clear
+: 1777292173:0;lscpu
+: 1777295977:0;lsblk
+: 1777296040:0;cd down
+: 1777296041:0;clear
+: 1777296042:0;ls
+: 1777296056:0;cd
+: 1777296057:0;ls
+: 1777296058:0;la
+: 1777296078:0;ls |grep '.'
+: 1777296082:0;ls |grep './'
+: 1777296091:0;ls |grep -i './'
+: 1777296100:0;ls
+: 1777296111:0;ltree
+: 1777296112:0;lt
+: 1777296115:0;lcear
+: 1777296116:0;c
+: 1777296118:0;la
+: 1777296193:0;type xclip
+: 1777296198:0;which xclip
+: 1777296273:0;which xsel
+: 1777296283:0;sudo dnf install xsel
+: 1777296306:0;sudo dnf install xclip
+: 1777296334:0;cat  | xclip -selection clipboard\
+
+: 1777296339:0;clear
+: 1777296340:0;ls
+: 1777296346:0;clear
+: 1777296347:0;ls
+: 1777296348:0;cd
+: 1777296350:0;la
+: 1777296378:0;cat .zsh_history | xclip -selection clipboard
+: 1777296442:0;./.zsh_history
